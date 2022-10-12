@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Playlists</h1>
+
+<div id="playlists">
+  <% @playlists.each do |playlist| %>
+    <%= render playlist %>
+    <p>
+      <%= link_to "Show", playlist %>
+      <% if current_user && current_user.admin %>
+        <%= link_to "Edit", edit_playlist_path(playlist) %>
+        <%= link_to "Destroy", playlist, method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New playlist", new_playlist_path %>
