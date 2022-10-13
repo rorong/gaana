@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_11_154706) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_12_131325) do
   create_table "albums", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -51,11 +51,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_154706) do
 
   create_table "songs", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
-    t.string "filename"
     t.bigint "artist_id", null: false
     t.bigint "album_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "mp3_file_name"
+    t.string "mp3_content_type"
+    t.bigint "mp3_file_size"
+    t.datetime "mp3_updated_at"
     t.index ["album_id"], name: "index_songs_on_album_id"
     t.index ["artist_id"], name: "index_songs_on_artist_id"
   end
